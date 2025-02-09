@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.dependencies import *
+from app.dependencies.sqlite_db import *
 from app.routers import post_handlers
 
 app = FastAPI()
