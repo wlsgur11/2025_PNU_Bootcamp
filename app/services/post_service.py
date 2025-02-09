@@ -1,28 +1,7 @@
-from fastapi import FastAPI, HTTPException, status, Depends
-from dataclasses import dataclass, asdict
-from sqlmodel import Field, SQLModel, Session, create_engine, select
+from dataclasses import asdict
+from sqlmodel import Session, select
 import time
-
-class Post(SQLModel, table=True):
-    id: int | None= Field(primary_key=True)
-    price: int = Field(index=True)
-    created_at: int = Field(index=True)
-    published: bool = Field(index=True)
-    title: str
-    body: str
-
-@dataclass
-class PostReq:
-    title: str
-    body: str
-    price: int
-    published: bool
-
-
-@dataclass
-class PostResp:
-    posts: list[Post]
-    err_str: str | None = None
+from app.models.post_models import *
 
 
 class PostService:
