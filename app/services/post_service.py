@@ -6,15 +6,12 @@ from app.models.post_models import *
 
 class PostService:
     def get_post(self, db: Session, post_id: int):
-        nPostid = 0
-        try:
-            nPostid = int(post_id)
-        except:
-            return None
         post = db.get(Post, post_id)
         return post
     
     def get_posts(self, db:Session, page: int=1, limit:int=10):
+        if limit > 10:
+            limit = 10
         nOffset = (page-1) * limit
         posts = db.exec(
             select(Post).offset(nOffset).limit(limit)
@@ -33,22 +30,29 @@ class PostService:
         db.refresh(postModel)
         return postModel
     
-    def update_post(self, db:Session, post_id: int, reqBody: PostReq):
+    def update_post(self, db:Session, 
+                    post_id: int, post: PostReq) -> tuple[Post|None,RESULT_CODE]:
         oldPost = db.get(Post, post_id)
         if not oldPost:
-            raise False
+            return (None,RESULT_CODE.NOT_FOUND)
         
-        dictToUpdate = asdict(reqBody)
+        dictToUpdate = asdict(post)
         oldPost.sqlmodel_update(dictToUpdate)
-        db.add(oldPost)
-        db.commit()
-        db.refresh(oldPost)
-        return oldPost
+        try:
+            db.add(oldPost)
+            db.commit()
+            db.refresh(oldPost)
+        except:
+            return (None, RESULT_CODE.FAILED)
+        return (oldPost, RESULT_CODE.SUCCESS)
     
-    def delete_post(self, db:Session, post_id: int):
+    def delete_post(self, db: Session, post_id: int) -> RESULT_CODE:
         post = db.get(Post, post_id)
         if not post:
-            return False
-        db.delete(post)
-        db.commit()
-        return True
+            return RESULT_CODE.NOT_FOUND 
+        try:
+            db.delete(post)
+            db.commit()
+        except:
+            return RESULT_CODE.FAILED
+        return RESULT_CODE.SUCCESS
