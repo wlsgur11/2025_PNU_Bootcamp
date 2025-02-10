@@ -25,6 +25,7 @@ class PostService:
         postModel.price = post.price
         postModel.published = post.published
         postModel.created_at = int(time.time())
+        postModel.location = post.location
         db.add(postModel)
         db.commit()
         db.refresh(postModel)

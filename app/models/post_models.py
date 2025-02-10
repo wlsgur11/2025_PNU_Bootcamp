@@ -14,6 +14,7 @@ class Post(SQLModel, table=True):
     published: bool = Field(index=True)
     title: str
     body: str
+    location: str = Field(index=True)
 
 @dataclass
 class PostReq:
@@ -21,6 +22,7 @@ class PostReq:
     body: str
     price: int
     published: bool
+    location: str
 
 
 @dataclass
