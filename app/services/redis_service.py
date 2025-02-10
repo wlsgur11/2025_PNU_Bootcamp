@@ -17,13 +17,14 @@ class RedisService:
         if post is None or len(post) < 1:
             return None
 
-        cachedPost = Post(id=0, price=0, created_at=0, published=False, title='', body='')
+        cachedPost = Post(id=0, price=0, created_at=0, published=False, title='', body='', location='')
         cachedPost.id = int(post.get('id', 0))
         cachedPost.price = int(post.get('price', 0))
         cachedPost.created_at = int(post.get('created_at', 0))
         cachedPost.published = post.get('published', '1') == '1'
         cachedPost.title = post.get('title', '')
         cachedPost.body = post.get('body', '')
+        cachedPost.location = post.get('location', '')
         return cachedPost
 
     # 게시물을 캐시에 추가하는 함수
@@ -34,6 +35,7 @@ class RedisService:
         await redis.hset(strKey,"title", post.title)
         await redis.hset(strKey,"body", post.body)
         await redis.hset(strKey,"created_at", post.created_at)
+        await redis.hset(strKey, "location", post.location)
 
         nPublished = 0
         if post.published:

@@ -61,7 +61,7 @@ async def update_post(post_id:int,
         raise HTTPException(status_code=500,
                             detail="Internal Server Error")
     
-    await redisService.delete_post(redis, post)
+    await redisService.delete_post(redis, post_id)
     return post
 
 @router.delete("/posts/{post_id}")
