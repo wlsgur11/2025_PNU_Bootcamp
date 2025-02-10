@@ -43,7 +43,7 @@ async def get_post(post_id: int,
         raise HTTPException(status_code=404, detail="Not Found")
     
     await redisService.add_post(redis, post)
-    resp = PostResp(posts=post)
+    resp = PostResp(posts=[post])
     return resp
 
 @router.put("/posts/{post_id}")

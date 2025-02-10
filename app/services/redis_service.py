@@ -34,7 +34,11 @@ class RedisService:
         await redis.hset(strKey,"title", post.title)
         await redis.hset(strKey,"body", post.body)
         await redis.hset(strKey,"created_at", post.created_at)
-        await redis.hset(strKey,"published", post.published)
+
+        nPublished = 0
+        if post.published:
+            nPublished = 1
+        await redis.hset(strKey,"published", nPublished)
 
         # await redis.hexpire(strKey, POST_EXPIRE)
 
