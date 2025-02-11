@@ -3,9 +3,9 @@ from pydantic import BaseModel
 
 class AuthSigninReq(BaseModel):
     login_id: str
-    pwd: str
+    password: str
 
 class AuthSignupReq(BaseModel):
     login_id: str
-    pwd: str
-    name: str
+    password: str
+    nickname: str

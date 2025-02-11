@@ -15,6 +15,7 @@ class Post(SQLModel, table=True):
     title: str
     body: str
     location: str = Field(index=True)
+    updated_at: int = Field(index=True)
 
 @dataclass
 class PostReq:
