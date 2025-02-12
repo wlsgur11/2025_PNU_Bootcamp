@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from sqlmodel import Field, SQLModel
 from enum import Enum
+from fastapi import UploadFile
+from pydantic import BaseModel
 
 class RESULT_CODE(Enum):
     SUCCESS = 1
@@ -18,14 +20,25 @@ class Post(SQLModel, table=True):
     location: str = Field(index=True)
     updated_at: int = Field(index=True)
     author_id: int | None =  Field(default=None, foreign_key="user.id")
+    like: int | None = Field(index=True)
 
-@dataclass
-class PostReq:
+# post-{post.id}-{photo.id}.png
+class Photo(SQLModel, table=True):
+    id: int|None = Field(primary_key=True)
+    created_at: int = Field(index=True)
+    post_id: int | None = Field(default=None, foreign_key="post.id")
+    author_id: int | None = Field(default=None)
+    image_src: str | None = Field(default=None)
+# '/static/post1-1.jpg'
+# GET http://localhost:8000/static/prdimages/prd1-1.png
+
+class PostReq(BaseModel):
     title: str
     body: str
     price: int
     published: bool
     location: str
+    files: list[UploadFile]
 
 
 @dataclass
