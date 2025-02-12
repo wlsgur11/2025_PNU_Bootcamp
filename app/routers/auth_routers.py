@@ -4,10 +4,11 @@ from fastapi import APIRouter, Depends, HTTPException, Header
 from typing import Annotated
 import time
 
-from app.models.parameter_models import AuthSignupReq, AuthSigninReq
+from app.models.parameter_models import AuthSignupReq, AuthSigninReq, UserResp
 from app.dependencies.sqlite_db import get_db_session
 from app.dependencies.jwt_utils import JWTUtil
 from app.services.auth_service import AuthService
+
 
 router = APIRouter(prefix='/auth')
 
@@ -55,3 +56,22 @@ def get_me(Authorization: Annotated[str, Header()],
     # postService.add_post(db, post, user.id)
 
     return {'user': userDict}
+
+@router.get('/users')
+def get_users(Authorization: Annotated[str, Header()],
+            jwtUtil: JWTUtil = Depends(),
+            page: int=1, 
+            limit: int=10, 
+            db=Depends(get_db_session), 
+            authService:AuthService = Depends()) -> UserResp:
+    token = Authorization.replace('Bearer ', '')
+    userDict = jwtUtil.decode_token(token)
+    if userDict is None:
+        raise HTTPException(status_code=401, detail="bye")
+    
+    if page < 1: page = 1
+    if limit < 1: return []
+    if limit > 10: limit = 10
+    resp = UserResp(users=[])
+    resp.users = authService.get_users(db, page, limit)
+    return resp
