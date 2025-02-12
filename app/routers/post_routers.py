@@ -23,7 +23,7 @@ def create_post(post: PostReq,
     if userDict is None:
         raise HTTPException(status_code=401, detail="bye")
     
-    resp = postService.create_post(db, post)
+    resp = postService.create_post(db, post, userDict)
     return resp
 
 @router.get('/posts')
@@ -74,13 +74,16 @@ async def update_post(post_id:int,
     if userDict is None:
         raise HTTPException(status_code=401, detail="bye")
     
-    post, code = postService.update_post(db, post_id, reqBody)
+    post, code = postService.update_post(db, post_id, reqBody, userDict)
     if code == RESULT_CODE.NOT_FOUND:
         raise HTTPException(status_code=404,
                             detail="Not Found")
     if code == RESULT_CODE.FAILED:
         raise HTTPException(status_code=500,
                             detail="Internal Server Error")
+    if code == RESULT_CODE.USER_FAIL:
+        raise HTTPException(status_code=404,
+                            detail="Not Your Post")
     
     await redisService.delete_post(redis, post_id)
     return post
@@ -103,9 +106,12 @@ async def delete_post(post_id: int,
         raise HTTPException(status_code=401, detail="bye")
 
 
-    resultCode = postService.delete_post(db, post_id)
+    resultCode = postService.delete_post(db, post_id, userDict)
     if resultCode == RESULT_CODE.NOT_FOUND:
         raise HTTPException(status_code=404, detail="Not Found")
+    if resultCode == RESULT_CODE.USER_FAIL:
+        raise HTTPException(status_code=404,
+                            detail="Not Your Post")
     await redisService.delete_post(redis, post_id)
     return {"ok": True}
 
@@ -134,6 +140,9 @@ async def pullup_post(post_id:int,
     if code == RESULT_CODE.FAILED:
         raise HTTPException(status_code=500,
                             detail="Internal Server Error")
+    if code == RESULT_CODE.USER_FAIL:
+        raise HTTPException(status_code=404,
+                            detail="Not Your Post")
     
     await redisService.delete_post(redis, post_id)
     return post

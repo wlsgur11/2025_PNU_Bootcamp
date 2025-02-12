@@ -57,3 +57,12 @@ class AuthService:
             return None
 
         return dbUser
+    
+    def get_users(self, db:Session, page: int=1, limit:int=10):
+        if limit > 10:
+            limit = 10
+        nOffset = (page-1) * limit
+        users = db.exec(
+            select(User).offset(nOffset).limit(limit)
+        ).all()
+        return users

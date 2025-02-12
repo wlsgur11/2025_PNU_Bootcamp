@@ -6,6 +6,7 @@ class RESULT_CODE(Enum):
     SUCCESS = 1
     NOT_FOUND = -2
     FAILED = -3
+    USER_FAIL = -4
 
 class Post(SQLModel, table=True):
     id: int | None= Field(primary_key=True)
@@ -16,6 +17,7 @@ class Post(SQLModel, table=True):
     body: str
     location: str = Field(index=True)
     updated_at: int = Field(index=True)
+    author_id: int | None =  Field(default=None, foreign_key="user.id")
 
 @dataclass
 class PostReq:
