@@ -47,6 +47,7 @@ def get_me(Authorization: Annotated[str, Header()],
     userDict = jwtUtil.decode_token(token)
     if userDict is None:
         raise HTTPException(status_code=401, detail="bye")
+    print(userDict)
 
     # 검증이 완료됐다.
 

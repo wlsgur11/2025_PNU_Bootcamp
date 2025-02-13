@@ -8,21 +8,21 @@ from app.dependencies.jwt_utils import JWTUtil
 from typing import Annotated
 import os
 import time
-from fastapi.responses import JSONResponse
+
 
 router = APIRouter()
 
-@router.get('/photos/static/{author_id}/{post_id}')
-async def get_post_photos(author_id: int, post_id: int) -> list[str]:
-    photo_directory = f"./static/{author_id}/{post_id}"
-    if not os.path.exists(photo_directory):
-        raise HTTPException(status_code=404, detail="Not Found")
+# @router.get('/photos/static/{author_id}/{post_id}')
+# async def get_post_photos(author_id: int, post_id: int) -> list[str]:
+#     photo_directory = f"./static/{author_id}/{post_id}"
+#     if not os.path.exists(photo_directory):
+#         raise HTTPException(status_code=404, detail="Not Found")
 
-    photos = [f for f in os.listdir(photo_directory) if f.endswith(('.png', '.jpg', '.jpeg', '.gif'))]
-    if not photos:
-        raise HTTPException(status_code=404, detail="No photos found")
-    photo_paths = [f"/static/{author_id}/{post_id}/{photo}" for photo in photos]
-    return JSONResponse(content=photo_paths)
+#     photos = [f for f in os.listdir(photo_directory) if f.endswith(('.png', '.jpg', '.jpeg', '.gif'))]
+#     if not photos:
+#         raise HTTPException(status_code=404, detail="No photos found")
+#     photo_paths = [f"/static/{author_id}/{post_id}/{photo}" for photo in photos]
+#     return JSONResponse(content=photo_paths)
 
 
 def save_file(db: Session, files: dict[str, bytes], post_id: int, author_id: int):
@@ -82,12 +82,26 @@ def get_post(page: int=1,
              limit: int=10, 
              keyword: str|None=None,
              db=Depends(get_db_session), 
+             postService:PostService = Depends()):
+    if page < 1: page = 1
+    if limit < 1: return []
+    if limit > 10: limit = 10
+    # resp = PostResp(posts=[])
+    # resp.posts = postService.get_posts(db, page, limit, keyword)
+    # return resp
+    return postService.get_posts(db, page, limit, keyword)
+
+@router.get('/region/{keyword}')
+def get_post(page: int=1, 
+             limit: int=10, 
+             keyword: str|None=None,
+             db=Depends(get_db_session), 
              postService:PostService = Depends()) -> PostResp:
     if page < 1: page = 1
     if limit < 1: return []
     if limit > 10: limit = 10
     resp = PostResp(posts=[])
-    resp.posts = postService.get_posts(db, page, limit, keyword)
+    resp.posts = postService.get_region_posts(db, page, limit, keyword)
     return resp
 
 @router.get("/posts/{post_id}")
@@ -95,19 +109,24 @@ async def get_post(post_id: int,
              db=Depends(get_db_session), 
              postService: PostService = Depends(),
              redis=Depends(get_redis),
-             redisService=Depends(RedisService)) -> PostResp:
+             redisService=Depends(RedisService)) -> PostWithPhotos:
     
-    cachedPost = await redisService.get_post(redis, post_id)
-    if cachedPost is not None:
-        return PostResp([cachedPost])
-    
-    post = postService.get_post(db, post_id=post_id)
+    post = await redisService.get_post(redis, post_id)
+    if post is None:
+        post = postService.get_post(db, post_id=post_id)
+        
     if not post:
         raise HTTPException(status_code=404, detail="Not Found")
     
+    author_id = post.author_id
+    photos = postService.get_photos(db, post_id=post_id, author_id=author_id)
+
+    res = PostWithPhotos(post=post, photos=photos)
+    
     await redisService.add_post(redis, post)
-    resp = PostResp(posts=[post])
-    return resp
+    # resp = PostResp(posts=[post])
+
+    return res
 
 @router.put("/posts/{post_id}")
 async def update_post(post_id:int, 
@@ -185,7 +204,7 @@ async def pullup_post(post_id:int,
     if userDict is None:
         raise HTTPException(status_code=401, detail="bye")
 
-    post, code = postService.pullup_post(db, post_id)
+    post, code = postService.pullup_post(db, post_id, userDict)
     if code == RESULT_CODE.NOT_FOUND:
         raise HTTPException(status_code=404,
                             detail="Not Found")

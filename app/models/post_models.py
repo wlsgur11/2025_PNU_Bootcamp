@@ -21,6 +21,7 @@ class Post(SQLModel, table=True):
     updated_at: int = Field(index=True)
     author_id: int | None =  Field(default=None, foreign_key="user.id")
     like: int | None = Field(index=True)
+    author_name: str | None  = Field(default=None)
 
 # post-{post.id}-{photo.id}.png
 class Photo(SQLModel, table=True):
@@ -30,7 +31,7 @@ class Photo(SQLModel, table=True):
     author_id: int | None = Field(default=None)
     image_src: str | None = Field(default=None)
 # '/static/post1-1.jpg'
-# GET http://localhost:8000/static/prdimages/prd1-1.png
+# GET http://localhost:8000/static/{author_id}/{post_id}/0.png
 
 class PostReq(BaseModel):
     title: str
@@ -39,6 +40,19 @@ class PostReq(BaseModel):
     published: bool
     location: str
     files: list[UploadFile]
+
+class PostWithPhoto(BaseModel):
+    post: Post
+    photo: Photo
+
+class PostWithPhotos(BaseModel):
+    post: Post
+    photos: list[str] = []
+
+class PostListWithPhoto(BaseModel):
+    posts: list[PostWithPhoto] = []
+    err_str: str | None = None
+
 
 
 @dataclass
