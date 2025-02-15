@@ -8,12 +8,12 @@
 
 <br/>
 
-# 2주 당근마켓 Web Page v1.0
+# 2주 당근마켓 v1.0
 > **2025 PNU Mini Bootcamp - BE with 멋쟁이사자처럼** <br/> **개발기간: 2025.02.03 ~ 2025.02.14**
 
 <br/>
 
-## 웹개발팀 소개
+## 팀 소개
 
 |문진혁|                                                                                                              
 | :------: | 
@@ -25,7 +25,7 @@
 
 ## 프로젝트 소개
 
-2주간의 부트캠프 과정에서 학습한 게시판의 이해를 기반으로 새로운 서비스가 아닌 기존의 존재하는 서비스의 기능을 비슷하게 만들어 보는 프로젝트.
+2주간의 부트캠프 과정에서 학습한 게시판의 이해를 기반으로 새로운 서비스가 아닌 기존의 존재하는 서비스의 API를 비슷하게 만들어 보는 프로젝트.
 프론트는 다른 깃허브 참조: [daangn_front](https://github.com/devmin24/daangn_front)
 
 #### 스스로 처음부터 만들어 보기
@@ -39,8 +39,6 @@ chat GPT를 사용하지 않음으로써 프로그래밍, 디버깅 실력 향�
 - [Python 3.12.0+](https://www.python.org/downloads/release/python-3120/)
 #### 프론트엔드
 - [Node.js v22.13.1](https://nodejs.org/ko)
-
-<br/>
 
 ### Installation
 ``` bash
@@ -62,6 +60,8 @@ $ cd frontend
 $ npm install 
 $ npm run dev
 ```
+
+<br/>
 
 ---
 
@@ -92,13 +92,28 @@ $ npm run dev
 ### 문서
 ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
 
+<br/>
+
+---
+## API 명세
+![Fast Api swagger UI](https://github.com/user-attachments/assets/7e7f960c-c3b4-405a-a095-6b87b4978eca)
+
+
+<br/>
+
+
+
 ---
 ## 화면 구성 📺
-| 메인 페이지  |  소개 페이지   |
+| 회원가입 페이지  |  게시물 목록 페이지   |
 | :-------------------------------------------: | :------------: |
-|  <img width="329" src="https://user-images.githubusercontent.com/50205887/208036155-a57900f7-c68a-470d-923c-ff3c296ea635.png"/> |  <img width="329" src="https://user-images.githubusercontent.com/50205887/208036645-a76cf400-85bc-4fa2-af72-86d2abf61366.png"/>|  
-| 강좌 소개 페이지   |  강의 영상 페이지   |  
-| <img width="329" src="https://user-images.githubusercontent.com/50205887/208038737-2b32b7d2-25f4-4949-baf5-83b5c02915a3.png"/>   |  <img width="329" src="https://user-images.githubusercontent.com/50205887/208038965-43a6318a-7b05-44bb-97c8-b08b0495fba7.png"/>     |
+|  <img width="329" src="https://private-user-images.githubusercontent.com/87259233/413515291-86b8cbd4-febc-4b6f-89ba-2c49c26962eb.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzk1OTY0MDIsIm5iZiI6MTczOTU5NjEwMiwicGF0aCI6Ii84NzI1OTIzMy80MTM1MTUyOTEtODZiOGNiZDQtZmViYy00YjZmLTg5YmEtMmM0OWMyNjk2MmViLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjE1VDA1MDgyMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPThiZjU2MzZiZWRlNjQzYmQ0YTc1ZTI0MGE0YTM2N2YxZDQxZDczNjY0NzgzMjQxMzc0NTQzOWQ5MzY1NjBiZWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.9TVvP7J-v_VGpQYsmlMfAX4tHob2ETskNH2KVYxHSWE"/> |  <img width="329" src="https://private-user-images.githubusercontent.com/87259233/413515314-27fa3ea7-9cae-47a2-b6ce-e17766465b0b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzk1OTY0NDAsIm5iZiI6MTczOTU5NjE0MCwicGF0aCI6Ii84NzI1OTIzMy80MTM1MTUzMTQtMjdmYTNlYTctOWNhZS00N2EyLWI2Y2UtZTE3NzY2NDY1YjBiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjE1VDA1MDkwMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI0ODI3Nzc5YTdlMDIxYzgzM2EwOTcyOGZjZGRlMTIyNGY3NGJiZDQ4MWEzZTJjYTU0OWVkZGJhZWI1YjAxZjMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.aPzT8DftG5_H0r-C77_7310sylFFIaQdYejadj3XkaE"/>|  
+| 게시물 상세 페이지   |  본인 게시물 상세 페이지   |  
+| <img width="329" src="https://private-user-images.githubusercontent.com/87259233/413515330-7be52c98-a48f-46d0-b49b-454a8f551e83.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzk1OTY0NjgsIm5iZiI6MTczOTU5NjE2OCwicGF0aCI6Ii84NzI1OTIzMy80MTM1MTUzMzAtN2JlNTJjOTgtYTQ4Zi00NmQwLWI0OWItNDU0YThmNTUxZTgzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjE1VDA1MDkyOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc4MjYwZDZlMTFlODY3YzA3Y2JkMjNmOTJhYmQyZmE5MzM3NGQwOGVjZGJlMTY5YTI0MDJlMGYyMmVkZWJhNGUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.-CuY-leKw9SVsRjC3pJHpI-cu-81n_dA4_s9Iw_LKOw"/>   |  <img width="329" src="https://private-user-images.githubusercontent.com/87259233/413515337-703ca3c1-60f5-47e4-bad9-da7235a98396.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzk1OTY1MDcsIm5iZiI6MTczOTU5NjIwNywicGF0aCI6Ii84NzI1OTIzMy80MTM1MTUzMzctNzAzY2EzYzEtNjBmNS00N2U0LWJhZDktZGE3MjM1YTk4Mzk2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjE1VDA1MTAwN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc5Y2QzNjYxZjg5Njg1OTk5MTQ4ODFlMGUzMmM0M2YyZTU1MjgyY2RmZDA0MzdlZWNmNzk0YmZmNGUyYTY0MzUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.tQfPf386CxK-zTB4Qic0bIVXxFuUBa8IcQMUOHJqLpc"/>     |
+| 게시물 작성 페이지   | 지역별 게시물 페이지   |  
+| <img width="329" src="https://private-user-images.githubusercontent.com/87259233/413515346-653e9c8b-4bd6-49df-bcbc-81b8d5c9774e.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzk1OTY1NDYsIm5iZiI6MTczOTU5NjI0NiwicGF0aCI6Ii84NzI1OTIzMy80MTM1MTUzNDYtNjUzZTljOGItNGJkNi00OWRmLWJjYmMtODFiOGQ1Yzk3NzRlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjE1VDA1MTA0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTRjZTEyMGViMjI2MDZkYTU0YmE3MTVmNGEzMTA0MjM4Yjk2MWExMzUxMjdhYjM2ZjlhZDQ4OTkyNjk2YjU1OWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.7rbLOnjoNiu9nSJu6wgPjHd7Rf0cuRo0x3OCo-OZlrE"/>   |  <img width="329" src="https://private-user-images.githubusercontent.com/87259233/413515371-aed0c30c-f589-4ad0-b5c6-a2c3fabdc677.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzk1OTY1NjUsIm5iZiI6MTczOTU5NjI2NSwicGF0aCI6Ii84NzI1OTIzMy80MTM1MTUzNzEtYWVkMGMzMGMtZjU4OS00YWQwLWI1YzYtYTJjM2ZhYmRjNjc3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjE1VDA1MTEwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTgyNWJlZjgwZGI3ZDc4ZGQ2YTQ3ZGY5MzcwNzkxOGJjOWQ2ZjAwY2ZjMGM5Mjg4YTkyYjJmZGE1NjYxODE3NmEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.IXxoQa1cMOaLYTr_ShLsgWbBLiFaTnE3F2n2iGRm0Go"/>     |
+
+<br/>
 
 ---
 ## 주요 기능 📦
@@ -106,12 +121,19 @@ $ npm run dev
 ### ⭐️ 회원가입, 로그인
 - JWT토큰을 사용한 HTTP stateless 환경의 유지 및 단점 보완
 
-### ⭐️ 최신순 게시물 정렬, 무한 스크롤, redid 캐싱
+### ⭐️ 최신순 게시물 정렬, 무한 스크롤, redis 캐싱
 - 한 페이지에 네개의 게시물을 불러오고 화면 끝까지 스크롤 하면 다음 페이지의 게시물들을 불러오는 무한 스크롤 기능
 - 빠른 로딩을 위한 redis 캐싱 전략: in memory 캐시인 redis에 캐싱된 게시물이 아니라면 DB에 요청해서 받아오고 이미 캐싱되어 있다면 redis에서 가져오는 식으로 게시물 페이지 로딩속도 개선(게시물 20개 기준 전체 페이지 기준 기존: 5~10초, redis 적용 후: 1초 이내)
 
 ### ⭐️ 끌어올리기
 - Post테이블에 created_at, updated_at을 추가하여 정렬은 업데이트 순 디테일에는 작성일자가 보이도록 나눔
+
+### ⭐️ 사진 첨부
+- 한 사용자는 여러개의 게시물을 가지고 한 게시물은 최대 다섯 개의 사진을 가진다. 사진은 서버 컴퓨터에 **static/{사용자 id}/{게시물 id}/{게시물 번호}.{사진 확장자}** 로 저장된다.
+- fastapi의 static 기능은 static폴더 안의 데이터는 호출시 바로 웹에 띄워주는 기능이다. 예를들어 http://localhost:8000/static/1/1/pic.png 로 접속하면 바로 1번 사용자의 1번 게시물의 pic 사진을 보여준다.
+- 사용자로부터 받는 입력을 파싱하여 사용한다. ".확장자"만 분리하고 이전은 1~5로 바꾸고 확장자는 (jpg, png, webp 등) 다섯 가지로 제한하고 파싱한다.
+
+<br/>
 
 ## 추후 추가 기능
 
@@ -130,6 +152,8 @@ $ npm run dev
 
 #### 회원정보
 - 회원정보 페이지의 부재로 인한 불편함
+
+<br/>
 
 ---
 ## 아키텍쳐
