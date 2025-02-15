@@ -97,6 +97,7 @@ $ npm run dev
 
 ---
 ## 화면 구성 📺
+### [시연 영상 Youtube](https://youtu.be/Ef-teuYRaN4)
 
 <div align="center">
 
