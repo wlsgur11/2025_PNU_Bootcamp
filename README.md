@@ -2,6 +2,13 @@
 
 파일을 clone한 후 env파일을 추가하고 DB경로와 비밀번호를 수정해주십시오
 ```
+전체 프로젝트 구조
+📦2025_PNU_Bootcamp
+┣ BackEnd
+┃ ┣ 📂FrontEnd
+┗ ┗ ┗ 📜frontend
+```
+```
 📦BackEnd
  ┣ 📦app
  ┃ ┣ 📂dependencies
