@@ -1,6 +1,22 @@
-직접 돌려보기
+# 2주 당근마켓
 
-파일을 clone한 후 env파일을 추가하고 DB경로와 비밀번호를 수정해주십시오
+<div align="center">
+<img width="329" alt="image" src="https://user-images.githubusercontent.com/50205887/207568862-cdc9e2c0-b03c-43ff-bf46-3ba79a110d0c.png">
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FVoluntain-SKKU%2FVoluntain-2nd&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
 ```
 전체 프로젝트 구조
 📦2025_PNU_Bootcamp
