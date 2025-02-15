@@ -34,7 +34,6 @@ chat GPT를 사용하지 않음으로써 프로그래밍, 디버깅 실력 향�
 <br/>
 
 ## 시작 가이드
-### 로컬
 #### 백엔드
 - [Python 3.12.0+](https://www.python.org/downloads/release/python-3120/)
 #### 프론트엔드
