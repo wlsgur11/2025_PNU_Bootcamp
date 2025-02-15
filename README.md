@@ -26,10 +26,7 @@
 ## 프로젝트 소개
 
 2주간의 부트캠프 과정에서 학습한 게시판의 이해를 기반으로 새로운 서비스가 아닌 기존의 존재하는 서비스의 기능을 비슷하게 만들어 보는 프로젝트.
-프론트는 다른 팀 깃허브 참조: [daangn_front](https://github.com/devmin24/daangn_front)
-
-
-<br/>
+프론트는 다른 깃허브 참조: [daangn_front](https://github.com/devmin24/daangn_front)
 
 #### 스스로 처음부터 만들어 보기
 chat GPT를 사용하지 않음으로써 프로그래밍, 디버깅 실력 향상과 프로젝트의 완벽한 이해를 바탕으로 한 개발
@@ -37,8 +34,7 @@ chat GPT를 사용하지 않음으로써 프로그래밍, 디버깅 실력 향�
 <br/>
 
 ## 시작 가이드
-### Requirements
-For building and running the application you need:
+### 로컬
 #### 백엔드
 - [Python 3.12.0+](https://www.python.org/downloads/release/python-3120/)
 #### 프론트엔드
@@ -48,21 +44,21 @@ For building and running the application you need:
 
 ### Installation
 ``` bash
-$ git clone https://github.com/Voluntain-SKKU/Voluntain-2nd.git
-$ cd Voluntain-2nd
+$ git clone https://github.com/wlsgur11/2025_PNU_Bootcamp.git
+$ cd 2025_PNU_Bootcamp
 ```
 #### Backend
-```
-$ cd strapi-backend
-$ nvm use v.14.19.3
-$ npm install
-$ npm run develop
+```CMD
+// open CMD (sure not powershell in window os)
+$ venv\Scripts\activate.bat
+$ (venv) fastapi dev main.py
 ```
 
 #### Frontend
-```
-$ cd voluntain-app
-$ nvm use v.14.19.3
+```powershell
+Different terminal with backend
+$ cd FrontEnd
+$ cd frontend
 $ npm install 
 $ npm run dev
 ```
@@ -71,26 +67,30 @@ $ npm run dev
 
 ## Stacks 🐈
 
-### Environment
+### 개발 환경
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white)
 ![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)             
+       
 
-### Config
-![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)        
+### 백엔드
+![fastapi](https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![python](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![sqlite](https://img.shields.io/badge/sqlite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![sqlalchemy](https://img.shields.io/badge/sqlalchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![redis](https://img.shields.io/badge/redis-FF4438?style=for-the-badge&logo=redis&logoColor=white)
+![pydantic](https://img.shields.io/badge/pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
 
-### Development
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Strapi](https://img.shields.io/badge/Strapi-2F2E8B?style=for-the-badge&logo=Strapi&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white)
-![Material UI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=MUI&logoColor=white)
+### 프론트엔드
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![vite](https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![redux](https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
+![axios](https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+![styledcomponents](https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white)
 
-### Communication
-![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white)
+
+### 문서
 ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
-![GoogleMeet](https://img.shields.io/badge/GoogleMeet-00897B?style=for-the-badge&logo=Google%20Meet&logoColor=white)
 
 ---
 ## 화면 구성 📺
@@ -103,15 +103,33 @@ $ npm run dev
 ---
 ## 주요 기능 📦
 
-### ⭐️ 강좌 선택 및 강의 영상 시청 기능
-- Scratch, Python 2개 강좌 및 각 강좌마다 10개 가량의 강의 영상 제공
-- 추후 지속적으로 강좌 추가 및 업로드 예정
+### ⭐️ 회원가입, 로그인
+- JWT토큰을 사용한 HTTP stateless 환경의 유지 및 단점 보완
 
-### ⭐️ 강의 관련 및 단체에 대한 자유로운 댓글 작성 가능
-- Disqus를 이용하여 강의 관련 질문이나 단체에 대한 질문 작성 가능
+### ⭐️ 최신순 게시물 정렬, 무한 스크롤, redid 캐싱
+- 한 페이지에 네개의 게시물을 불러오고 화면 끝까지 스크롤 하면 다음 페이지의 게시물들을 불러오는 무한 스크롤 기능
+- 빠른 로딩을 위한 redis 캐싱 전략: in memory 캐시인 redis에 캐싱된 게시물이 아니라면 DB에 요청해서 받아오고 이미 캐싱되어 있다면 redis에서 가져오는 식으로 게시물 페이지 로딩속도 개선(게시물 20개 기준 전체 페이지 기준 기존: 5~10초, redis 적용 후: 1초 이내)
 
-### ⭐️ 이어 학습하기 기능
-- Cookie 기능을 이용하여 이전에 학습했던 내용 이후부터 바로 학습 가능
+### ⭐️ 끌어올리기
+- Post테이블에 created_at, updated_at을 추가하여 정렬은 업데이트 순 디테일에는 작성일자가 보이도록 나눔
+
+## 추후 추가 기능
+
+#### 배포
+- 부트캠프에서 학습한 Amazon Lightsail을 활용하여 배포 시도
+
+#### 채팅, 댓글
+- 세션을 활용한 실시간 채팅과 댓글 기능 추가
+
+#### 게시글 수정 방법
+- 현재 수정은 기존 게시물의 정보를 등고오지 않고 처음부터 다시쓴다.
+
+#### 검색 기능
+- 현재 검색 기능은 스크롤을 하여 불러온 게시물에서 검색하는 기능이다
+- api는 구현했지만 프론트에서 단어를 고르고 스크롤된 카드리스트에서 가져오는 식이라 api를 활용하지 못하는 중이다
+
+#### 회원정보
+- 회원정보 페이지의 부재로 인한 불편함
 
 ---
 ## 아키텍쳐
@@ -207,21 +225,3 @@ $ npm run dev
  ┗ 📜main.jsx
 ```
 
-백엔드는 powershell 말고 cmd 사용하십쇼
-백엔드 실행
-```CMD
-venv\Scripts\activate.bat
-```
-```CMD
-fastapi dev main.py
-```
-
-프론트엔드 실행
-```bash
-npm install
-```
-```bash
-npm run dev
-```
-
-연습용 DB 포함
