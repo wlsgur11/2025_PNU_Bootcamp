@@ -2,7 +2,7 @@
 
 <div align="center">
 <img width="329" alt="image" src="https://raw.githubusercontent.com/wlsgur11/2025_PNU_Bootcamp/232739b75cb25ba6c1c2f4c122d5106e0c3253e9/Frontend/frontend/src/assets/css/logo.svg">
-
+</div>
 
 # 2주 당근마켓 v1.0
 <div align="center">
