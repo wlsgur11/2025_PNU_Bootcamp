@@ -61,7 +61,7 @@ $ npm run dev
 
 ---
 
-## Stacks 🐈
+## Stacks
 
 <div align="center">
 
@@ -94,7 +94,7 @@ $ npm run dev
 ![Fast Api swagger UI](https://github.com/user-attachments/assets/7e7f960c-c3b4-405a-a095-6b87b4978eca)
 
 ---
-## 화면 구성 📺
+## 화면 구성 
 ### [시연 영상 Youtube](https://youtu.be/Ef-teuYRaN4)
 
 <div align="center">
@@ -110,19 +110,19 @@ $ npm run dev
 </div>
 
 ---
-## 주요 기능 📦
+## 주요 기능 
 
-### ⭐️ 회원가입, 로그인
+###  회원가입, 로그인
 - JWT토큰을 사용한 HTTP stateless 환경의 유지 및 단점 보완
 
-### ⭐️ 최신순 게시물 정렬, 무한 스크롤, redis 캐싱
+###  최신순 게시물 정렬, 무한 스크롤, redis 캐싱
 - 한 페이지에 네개의 게시물을 불러오고 화면 끝까지 스크롤 하면 다음 페이지의 게시물들을 불러오는 무한 스크롤 기능
 - 빠른 로딩을 위한 redis 캐싱 전략: in memory 캐시인 redis에 캐싱된 게시물이 아니라면 DB에 요청해서 받아오고 이미 캐싱되어 있다면 redis에서 가져오는 식으로 게시물 페이지 로딩속도 개선(게시물 20개 기준 전체 페이지 기준 기존: 5~10초, redis 적용 후: 1초 이내)
 
-### ⭐️ 끌어올리기
+###  끌어올리기
 - Post테이블에 created_at, updated_at을 추가하여 정렬은 업데이트 순 디테일에는 작성일자가 보이도록 나눔
 
-### ⭐️ 사진 첨부
+###  사진 첨부
 - 한 사용자는 여러개의 게시물을 가지고 한 게시물은 최대 다섯 개의 사진을 가진다. 사진은 서버 컴퓨터에 **static/{사용자 id}/{게시물 id}/{게시물 번호}.{사진 확장자}** 로 저장된다.
 - fastapi의 static 기능은 static폴더 안의 데이터는 호출시 바로 웹에 띄워주는 기능이다. 예를들어 http://localhost:8000/static/1/1/pic.png 로 접속하면 바로 1번 사용자의 1번 게시물의 pic 사진을 보여준다.
 - 사용자로부터 받는 입력을 파싱하여 사용한다. ".확장자"만 분리하고 이전은 1~5로 바꾸고 확장자는 (jpg, png, webp 등) 다섯 가지로 제한하고 파싱한다.
@@ -154,82 +154,82 @@ $ npm run dev
 
 ```
 전체 프로젝트 구조
-📦2025_PNU_Bootcamp
+2025_PNU_Bootcamp
 ┣ BackEnd
-┃ ┣ 📂FrontEnd
-┗ ┗ ┗ 📜frontend
+┃ ┣ FrontEnd
+┗ ┗ ┗ frontend
 ```
 ```
-📦BackEnd
- ┣ 📦app
- ┃ ┣ 📂dependencies
- ┃ ┣ 📜__pycache__
- ┃ ┃ ┣ 📜jwt_utils.py
- ┃ ┃ ┣ 📜redis_db.py
- ┃ ┃ ┣ 📜sqlite_db.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📂models
- ┃ ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜parameter_models.py
- ┃ ┃ ┣ 📜post_models.py
- ┃ ┃ ┣ 📜user_models.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📂routers
- ┃ ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜auth_routers.py
- ┃ ┃ ┣ 📜post_routers.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📂services
- ┃ ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜auth_service.py
- ┃ ┃ ┣ 📜post_service.py
- ┃ ┃ ┣ 📜redis_service.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜dependencies
- ┃ ┃ ┗ 📜__init__
- ┗ ┗ 📜__init__.py
+BackEnd
+ ┣ app
+ ┃ ┣ dependencies
+ ┃ ┣ __pycache__
+ ┃ ┃ ┣ jwt_utils.py
+ ┃ ┃ ┣ redis_db.py
+ ┃ ┃ ┣ sqlite_db.py
+ ┃ ┃ ┗ __init__.py
+ ┃ ┣ models
+ ┃ ┃ ┣ __pycache__
+ ┃ ┃ ┣ parameter_models.py
+ ┃ ┃ ┣ post_models.py
+ ┃ ┃ ┣ user_models.py
+ ┃ ┃ ┗ __init__.py
+ ┃ ┣ routers
+ ┃ ┃ ┣ __pycache__
+ ┃ ┃ ┣ auth_routers.py
+ ┃ ┃ ┣ post_routers.py
+ ┃ ┃ ┗ __init__.py
+ ┃ ┣ services
+ ┃ ┃ ┣ __pycache__
+ ┃ ┃ ┣ auth_service.py
+ ┃ ┃ ┣ post_service.py
+ ┃ ┃ ┣ redis_service.py
+ ┃ ┃ ┗ __init__.py
+ ┃ ┣ __pycache__
+ ┃ ┃ ┣ dependencies
+ ┃ ┃ ┗ __init__
+ ┗ ┗ __init__.py
 ```
 ```
-📦FrontEnd
- ┣ 📂assets
- ┃ ┗ 📂css
- ┃ ┃ ┣ 📜asd.png
- ┃ ┃ ┣ 📜GlobalStyles.jsx
- ┃ ┃ ┣ 📜logo.svg
- ┃ ┃ ┣ 📜modal.css
- ┃ ┃ ┗ 📜profile.jpeg
- ┣ 📂components
- ┃ ┣ 📜CardSlide.jsx
- ┃ ┣ 📜Comment.jsx
- ┃ ┣ 📜CommentList.jsx
- ┃ ┣ 📜ContentsNotFound.jsx
- ┃ ┣ 📜Footer.jsx
- ┃ ┣ 📜Header.jsx
- ┃ ┣ 📜Like.jsx
- ┃ ┣ 📜MainBottom.jsx
- ┃ ┣ 📜MainBottom2.jsx
- ┃ ┣ 📜MainMiddle.jsx
- ┃ ┣ 📜MainTop.jsx
- ┃ ┣ 📜Modal.jsx
- ┃ ┗ 📜SearchNotFound.jsx
- ┣ 📂pages
- ┃ ┣ 📜Contents.jsx
- ┃ ┣ 📜Detail.jsx
- ┃ ┣ 📜Main.jsx
- ┃ ┣ 📜PageNotFound.jsx
- ┃ ┣ 📜RegionContent.jsx
- ┃ ┣ 📜Search.jsx
- ┃ ┗ 📜Write.jsx
- ┣ 📂redux
- ┃ ┣ 📂modules
- ┃ ┃ ┣ 📜commentSlice.jsx
- ┃ ┃ ┣ 📜contentSlice.jsx
- ┃ ┃ ┗ 📜userSlice.jsx
- ┃ ┗ 📜store.jsx
- ┣ 📂shared
- ┃ ┗ 📜axios.jsx
- ┣ 📜App.jsx
- ┗ 📜main.jsx
+FrontEnd
+ ┣ assets
+ ┃ ┗ css
+ ┃ ┃ ┣ asd.png
+ ┃ ┃ ┣ GlobalStyles.jsx
+ ┃ ┃ ┣ logo.svg
+ ┃ ┃ ┣ modal.css
+ ┃ ┃ ┗ profile.jpeg
+ ┣ components
+ ┃ ┣ CardSlide.jsx
+ ┃ ┣ Comment.jsx
+ ┃ ┣ CommentList.jsx
+ ┃ ┣ ContentsNotFound.jsx
+ ┃ ┣ Footer.jsx
+ ┃ ┣ Header.jsx
+ ┃ ┣ Like.jsx
+ ┃ ┣ MainBottom.jsx
+ ┃ ┣ MainBottom2.jsx
+ ┃ ┣ MainMiddle.jsx
+ ┃ ┣ MainTop.jsx
+ ┃ ┣ Modal.jsx
+ ┃ ┗ SearchNotFound.jsx
+ ┣ pages
+ ┃ ┣ Contents.jsx
+ ┃ ┣ Detail.jsx
+ ┃ ┣ Main.jsx
+ ┃ ┣ PageNotFound.jsx
+ ┃ ┣ RegionContent.jsx
+ ┃ ┣ Search.jsx
+ ┃ ┗ Write.jsx
+ ┣ redux
+ ┃ ┣ modules
+ ┃ ┃ ┣ commentSlice.jsx
+ ┃ ┃ ┣ contentSlice.jsx
+ ┃ ┃ ┗ userSlice.jsx
+ ┃ ┗ store.jsx
+ ┣ shared
+ ┃ ┗ axios.jsx
+ ┣ App.jsx
+ ┗ main.jsx
 ```
 
